@@ -9,42 +9,40 @@
 <body>
     <div class="container mt-5">
         <h2 class="text-center mb-4">Student Registration Form</h2>
+        @if(session()->has('success'))
+            <div class="alert alert-success">
+            {{ session('success') }}
+            </div>
+        @else
+        <div>No success message set.</div>
+        @endif
 
-        <!-- Form Start -->
+
+       
         <form action="{{ route('student.store') }}" method="POST" class="shadow p-4 rounded">
             @csrf
             @method('post')
 
-            <!-- First Name Field -->
             <div class="mb-3">
                 <label for="first_name" class="form-label">First Name</label>
                 <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter your first name">
             </div>
-
-            <!-- Last Name Field -->
             <div class="mb-3">
                 <label for="last_name" class="form-label">Last Name</label>
                 <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter your last name">
             </div>
-
-            <!-- Age Field -->
             <div class="mb-3">
                 <label for="age" class="form-label">Age</label>
                 <input type="number" class="form-control" id="age" name="age" placeholder="Enter your age" >
             </div>
-
-            <!-- Address Field -->
             <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
                 <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address">
             </div>
-
-            <!-- Submit Button -->
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
-        <!-- Form End -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>

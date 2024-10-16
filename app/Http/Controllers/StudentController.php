@@ -22,7 +22,8 @@ class StudentController extends Controller
         ]);
 
         $newStudent = Student::create($data);
-        return redirect(route('getStudents.index'));
+        return redirect()->route('getStudents.index');
+        return redirect()->route('student.store')->with('success', 'Student record successfully added!');
 
     }
 }

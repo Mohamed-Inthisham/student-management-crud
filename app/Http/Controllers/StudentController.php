@@ -8,8 +8,10 @@ use App\Models\Student;
 class StudentController extends Controller
 {
     public function getStudents(){
-        return view('students.index');
+        $students = Student::all();
+        return view('students.index', ['students' => $students]);
     }
+    
     public function createStudent(){
         return view('students.createStudent');
     }

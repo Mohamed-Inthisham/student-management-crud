@@ -62,6 +62,7 @@
                     <th>Age</th>
                     <th>Address</th>
                     <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,6 +74,13 @@
                         <td>{{ $student->address }}</td>
                         <td>
                             <a href="{{route('student.edit', ['student' => $student])}}">Edit</a>
+                        </td>
+                        <td>
+                            <form method="post" action="{{route('student.destroy',['student' => $student])}}">
+                                @csrf
+                                @method('delete')                      
+                                <input type="submit" value="delete"/>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

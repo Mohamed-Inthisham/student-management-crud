@@ -42,6 +42,10 @@ class StudentController extends Controller
         ]);
         $student->update($data);
         return redirect(route('getStudents.index'))->with('success', 'Student Updated SuccessFully');
+    }
 
+    public function destroyStudent(Student $student){
+        $student->delete();
+        return redirect(route('getStudents.index'))->with('success', 'Student Deleted SuccessFully');
     }
 }

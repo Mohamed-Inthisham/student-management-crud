@@ -14,11 +14,7 @@
             {{ session('success') }}
             </div>
         @else
-        <div>No success message set.</div>
         @endif
-
-
-       
         <form action="{{ route('student.store') }}" method="POST" class="shadow p-4 rounded">
             @csrf
             @method('post')

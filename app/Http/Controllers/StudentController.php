@@ -24,8 +24,24 @@ class StudentController extends Controller
         ]);
 
         $newStudent = Student::create($data);
-        return redirect()->route('getStudents.index');
-        return redirect()->route('student.store')->with('success', 'Student record successfully added!');
+        return redirect(route('getStudents.index'))->with('success', 'Student record successfully added!');
+
+    }
+
+    public function editStudent(Student $student){
+        return view('students.editStudent',['student'=> $student]);
+
+    }
+
+    public function updateStudent(Student $student , Request $request){
+        $data =$request->validate([
+            'first_name'=> 'required',
+            'last_name'=> 'required',
+            'age'=> 'required|numeric',
+            'address'=>'nullable'
+        ]);
+        $student->update($data);
+        return redirect(route('getStudents.index'))->with('success', 'Student Updated SuccessFully');
 
     }
 }

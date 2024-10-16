@@ -46,6 +46,13 @@
 </head>
 <body>
     <h1>Students</h1>
+    <div>
+        @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{session('success')}}
+        </div>
+        @endif
+    </div>
     <div class="table-container">
         <table class="table table-bordered">
             <thead>
@@ -54,6 +61,7 @@
                     <th>Last Name</th>
                     <th>Age</th>
                     <th>Address</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,6 +71,9 @@
                         <td>{{ $student->last_name }}</td>
                         <td>{{ $student->age }}</td>
                         <td>{{ $student->address }}</td>
+                        <td>
+                            <a href="{{route('student.edit', ['student' => $student])}}">Edit</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
